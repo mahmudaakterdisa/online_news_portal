@@ -31,6 +31,23 @@ const catagoriesDetails = id => {
     fetch(url)
         .then(response => response.json())
         .then(data => console.log(data))
+    //start load spinner
+    loadSpinner();
+
+}
+
+
+
+//loading spinner
+const loadSpinner = () => {
+    const loadSpiner = document.getElementById("load-spinner");
+    loadSpiner.innerHTML = `
+<div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+`
 }
 
 loadData();
