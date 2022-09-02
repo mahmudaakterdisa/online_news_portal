@@ -2,3 +2,18 @@
     color: rgb(233, 171, 13);
 
 }
+
+.catagories-color {
+
+    color: black;
+    background-color: rgb(241, 199, 94);
+    padding: 10px;
+    /* border: 2px solid crimson; */
+    border-radius: 8px;
+}
+
+.catagories-color:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
