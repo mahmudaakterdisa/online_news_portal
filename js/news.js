@@ -1,8 +1,9 @@
-// steps:fetch the url
+
 const loadData = () => {
     fetch(" https://openapi.programming-hero.com/api/news/categories")
         .then(response => response.json())
         .then(data => displayCatagories(data.data.news_category))
+        .catch(error => console.log(error))
 }
 
 const displayCatagories = (data) => {
@@ -31,6 +32,7 @@ const catagoriesDetails = id => {
     fetch(url)
         .then(response => response.json())
         .then(data => displayDetails(data.data))
+        .catch(error => console.log(error))
     //start load spinner
     loadSpinner(true);
 
@@ -105,6 +107,7 @@ const showModal = news_id => {
     fetch(url)
         .then(response => response.json())
         .then(data => newsDetails(data.data[0]))
+        .catch(error => console.log(error))
 }
 
 const newsDetails = (data) => {
@@ -114,11 +117,11 @@ const newsDetails = (data) => {
     const authorName = document.getElementById("exampleModalLabel");
     // authorName.innerText = data.author.name;
     authorName.innerHTML = `
-    <h5>${data.author ? data.author.name : "No data available"}</h5>
+    <h5>${data.author.name ? data.author.name : "Author Name Not Found"}</h5>
     `;
     const totalView = document.getElementById("moda-details");
     totalView.innerHTML = `
-    <p>Total view:${data.total_view ? data.total_view : "No data available"}</p>
+    <p>Total view:${data.total_view ? data.total_view : "No Views Found"}</p>
     `
 }
 
