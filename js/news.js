@@ -50,10 +50,10 @@ const displayDetails = data => {
         div.innerHTML = `
         <div class="card my-5 mx-auto" style="max-width: 900px;">
                 <div class="row g-0">
-                    <div class="col-sm-4 col-md-4">
-                        <img src="${details.image_url}" class="img-thumbnail rounded-start my-auto" alt="...">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <img src="${details.image_url}" class="img-thumbnail rounded-start my-auto" alt="..." style:"height:200px;width:200px;">
                     </div>
-                    <div class="col-sm-8 col-md-8">
+                    <div class="col-8 col-sm-8 col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${details.title}</h5>
                             <p class="card-text text-truncate">${details.details}</p>
@@ -76,7 +76,7 @@ const displayDetails = data => {
                               <i class="fa-solid fa-eye fs-6 ">${details.total_view ? details.total_view : "no-views"}</i>
                               </div>
                               <div class="col-4 col-sm-3 col-md-3">
-                              <button class="btn btn-primary p-2  " type="submit" onclick="showModal('${details._id}')"    data-bs-toggle="modal" data-bs-target="#exampleModal">show More</button>
+                              <button class="btn btn-color p-2 text-dark" type="submit" onclick="showModal('${details._id}')"    data-bs-toggle="modal" data-bs-target="#exampleModal">More</button>
                               </div>
                             </div >
                         </div >
@@ -141,7 +141,7 @@ const loadSpinner = (isspinner) => {
 }
 //data not found
 const detailsCatagories = data => {
-    console.log(data);
+
     const noFoundText = document.getElementById("no-found");
     if (data == 0) {
         noFoundText.classList.remove("d-none");
