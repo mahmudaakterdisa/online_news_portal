@@ -5,10 +5,12 @@ const loadData = () => {
         .then(data => displayCatagories(data.data.news_category))
         .catch(error => console.log(error))
 }
+//display all catagories name
 
 const displayCatagories = (data) => {
 
     const categories = document.getElementById("catagories")
+
     data.forEach(catagory => {
         // console.log(catagory);
 
@@ -16,7 +18,7 @@ const displayCatagories = (data) => {
         div.classList.add("catagories-color")
         //catagories function also add here
         div.innerHTML = `
-<h3 onclick="catagoriesDetails('${catagory.category_id}')">${catagory.category_name}</h3>
+<h3 onclick="catagoriesDetails('${catagory.category_id}')" >${catagory.category_name}</h3>
 
 `;
         categories.appendChild(div);
@@ -41,11 +43,18 @@ const catagoriesDetails = id => {
 //news details
 const displayDetails = data => {
 
-    const checkData = detailsCatagories(data.length);
+    const countTotal = data.length;
+
+    //show error massage for catagories
+    const checkData = detailsCatagories(countTotal);
+    //count news for catagories
+    const countFeed = totalNewsFeed(countTotal);
+
 
     const newsDetails = document.getElementById("news-details");
     newsDetails.innerText = " ";
     data.forEach(details => {
+
 
         const div = document.createElement("div");
 
@@ -152,6 +161,15 @@ const detailsCatagories = data => {
     else {
         noFoundText.classList.add("d-none");
     }
+}
+
+// input field and count total news
+
+const totalNewsFeed = (data) => {
+    const newsFeedCount = document.getElementById("input-field");
+    newsFeedCount.value = `${data} items found for this category`;
+
+
 }
 
 loadData();
