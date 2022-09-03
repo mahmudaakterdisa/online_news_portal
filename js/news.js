@@ -38,44 +38,58 @@ const catagoriesDetails = id => {
 
 //news details
 const displayDetails = data => {
-
+    console.log(data);
+    const checkData = detailsCatagories(data.length);
+    console.log(checkData);
     const newsDetails = document.getElementById("news-details");
     newsDetails.innerText = " ";
     data.forEach(details => {
-        // console.log(details);
+
         const div = document.createElement("div");
 
         div.innerHTML = `
         <div class="card my-5 mx-auto" style="max-width: 900px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-sm-4 col-md-4">
                         <img src="${details.image_url}" class="img-thumbnail rounded-start my-auto" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-sm-8 col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${details.title}</h5>
                             <p class="card-text text-truncate">${details.details}</p>
                            
-                                <div class="d-sm-flex d-md-flex justify-content-between ">
-                                    <div>
-                                        <div ><img src="${details.author ? details.author.img : "Author not found"}" class="author-img rounded" alt="..."></div>
-                                        <div>
-                                            <h5 class="p-sm-2 p-md-2">Author Name:${details.author ? details.author.name : "Author not found"}</h5>
-                                        </div>
-                                        
-                                        
-                                    </div>
-                                
-                                    <button class="btn btn-primary p-2 h-25 mt-4" type="submit" onclick="showModal('${details._id}')"    data-bs-toggle="modal" data-bs-target="#exampleModal">show More</button>
-                                </div>
-                               
+                            
                            
                             
                         </div>
-                    </div>
-                </div>
-            </div>
-        `;
+
+                        <div class="container">
+                            <div class="row mx-auto">
+                              <div class="col-sm-6 col-md-6">
+                              <img src="${details.author ? details.author.img : "Author not found"}" class="author-img rounded-circle" alt="...">
+                                       
+                              <span class="p-sm-2 p-md-2">${details.author.name ? details.author.name : 'not-found'}</span>
+
+           
+                              </div >
+                              <div class="col-sm-3 col-md-3 mt-sm-2 mt-md-2">
+                              <i class="fa-solid fa-eye fs-6 ">${details.total_view ? details.total_view : "no-views"}</i>
+                              </div>
+                              <div class="col-sm-3 col-md-3">
+                              <button class="btn btn-primary p-2  " type="submit" onclick="showModal('${details._id}')"    data-bs-toggle="modal" data-bs-target="#exampleModal">show More</button>
+                              </div>
+                            </div >
+                        </div >
+
+
+
+
+                    </div >
+                </div >
+                
+                               
+            </div >
+    `;
         newsDetails.appendChild(div);
 
     });
@@ -95,7 +109,7 @@ const showModal = news_id => {
 
 const newsDetails = (data) => {
 
-    console.log(data);
+
     const moreDetails = document.getElementById("more-details");
     const authorName = document.getElementById("exampleModalLabel");
     // authorName.innerText = data.author.name;
