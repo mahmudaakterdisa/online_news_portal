@@ -43,6 +43,12 @@ const catagoriesDetails = id => {
 //news details
 const displayDetails = data => {
 
+    data.sort((a, b) => {
+        return b.total_view - a.total_view;
+
+    });
+
+
     const countTotal = data.length;
 
     //show error massage for catagories
@@ -104,8 +110,13 @@ const displayDetails = data => {
         newsDetails.appendChild(div);
 
     });
+
     //stop spinner
     loadSpinner(false);
+
+
+
+
 }
 
 //show Modal
