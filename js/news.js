@@ -38,9 +38,9 @@ const catagoriesDetails = id => {
 
 //news details
 const displayDetails = data => {
-    console.log(data);
+
     const checkData = detailsCatagories(data.length);
-    console.log(checkData);
+
     const newsDetails = document.getElementById("news-details");
     newsDetails.innerText = " ";
     data.forEach(details => {
@@ -65,17 +65,17 @@ const displayDetails = data => {
 
                         <div class="container">
                             <div class="row mx-auto">
-                              <div class="col-sm-6 col-md-6">
+                              <div class="col-5 col-sm-6 col-md-6">
                               <img src="${details.author ? details.author.img : "Author not found"}" class="author-img rounded-circle" alt="...">
                                        
-                              <span class="p-sm-2 p-md-2">${details.author.name ? details.author.name : 'not-found'}</span>
+                              <span class="p-sm-2 p-md-2">${details.author.name ? details.author.name : 'no-name'}</span>
 
            
                               </div >
-                              <div class="col-sm-3 col-md-3 mt-sm-2 mt-md-2">
+                              <div class="col-3 col-sm-3 col-md-3 mt-sm-2 mt-md-2">
                               <i class="fa-solid fa-eye fs-6 ">${details.total_view ? details.total_view : "no-views"}</i>
                               </div>
-                              <div class="col-sm-3 col-md-3">
+                              <div class="col-4 col-sm-3 col-md-3">
                               <button class="btn btn-primary p-2  " type="submit" onclick="showModal('${details._id}')"    data-bs-toggle="modal" data-bs-target="#exampleModal">show More</button>
                               </div>
                             </div >
@@ -138,6 +138,17 @@ const loadSpinner = (isspinner) => {
         loadSpiner.classList.add("d-none");
     }
 
+}
+//data not found
+const detailsCatagories = data => {
+    console.log(data);
+    const noFoundText = document.getElementById("no-found");
+    if (data == 0) {
+        noFoundText.classList.remove("d-none");
+    }
+    else {
+        noFoundText.classList.add("d-none");
+    }
 }
 
 loadData();
